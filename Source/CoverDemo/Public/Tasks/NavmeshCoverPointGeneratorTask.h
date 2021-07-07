@@ -36,7 +36,8 @@ private:
 	// Length of the raycast for checking if there's a navmesh hole to one of the sides of a navmesh edge.
 	const float NavmeshHoleCheckReach = 5.0f;
 
-	// Height of the smallest actor that will ever fit under an overhanging cover. Should normally be the CROUCHED height of the smallest actor in the game. Not counting bunnies. Bunnies are useless.
+	// Height of the smallest actor that will ever fit under an overhanging cover.
+	// Should normally be the CROUCHED height of the smallest actor in the game. Not counting bunnies. Bunnies are useless.
 	const float SmallestAgentHeight;
 
 	// A small Z-axis offset applied to each cover point. This is to prevent small irregularities in the navmesh from registering as cover.

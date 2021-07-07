@@ -230,7 +230,10 @@ void UCoverSystem::RemoveStaleCoverPoints(FBox Area)
 		// check if the cover point still has an owner and still falls on the exact same location on the navmesh as it did when it was generated
 		FNavLocation navLocation;
 		if (IsValid(coverPoint.GetOwner())
-			&& UNavigationSystemV1::GetCurrent(GetWorld())->ProjectPointToNavigation(coverPoint.Data->Location, navLocation, FVector(0.1f, 0.1f, CoverPointGroundOffset)))
+			&& UNavigationSystemV1::GetCurrent(GetWorld())->ProjectPointToNavigation(
+				coverPoint.Data->Location,
+				navLocation,
+				FVector(0.1f, 0.1f, CoverPointGroundOffset)))
 			continue;
 
 #if ENGINE_MINOR_VERSION < 26

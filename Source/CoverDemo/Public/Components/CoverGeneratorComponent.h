@@ -18,7 +18,8 @@ public:
 	UCoverGeneratorComponent();
 
 private:
-	// Expand the bounding box of the object by this amount * ScanGridUnit, it's for when the navmesh around the object would exceed the object's bounds by too much.
+	// Expand the bounding box of the object by this amount * ScanGridUnit, it's for when the navmesh around the object would
+	// exceed the object's bounds by too much.
 	const float BoundingBoxExpansion = 0.5f;
 
 #if DEBUG_RENDERING
@@ -35,15 +36,20 @@ private:
 	virtual void BeginPlay() override;
 
 public:
-	// Should cover points be generated right at BeginPlay or not. Should be set to false for most ordnances. Need to call GenerateCoverPoints() later explicitly when this is set to false.
+	// Should cover points be generated right at BeginPlay or not. Should be set to false for most ordnances.
+	// Need to call GenerateCoverPoints() later explicitly when this is set to false.
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	bool bGenerateOnBeginPlay = true;
 
-	// Whether to generate cover points per UStaticMeshComponent found in Owner or around all the colliding components inside the owner's bounding box. Set to true if owner's bounding box would likely intersect with other actors in-game.
+	// Whether to generate cover points per UStaticMeshComponent found in Owner or around all
+	// the colliding components inside the owner's bounding box. Set to true if owner's bounding
+	// box would likely intersect with other actors in-game.
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	bool bGeneratePerStaticMesh = false;
 
-	// Density of the scan grid (lower number -> more traces); Guideline: should be a bit less than the capsule radius of the smallest unit capable of getting into cover, which is normally == smallest radius used for navigation by the navmesh.
+	// Density of the scan grid (lower number -> more traces);
+	// Guideline: should be a bit less than the capsule radius of the smallest unit capable of getting into cover,
+	// which is normally == smallest radius used for navigation by the navmesh.
 	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
 	float ScanGridUnit = 75.0f;
 

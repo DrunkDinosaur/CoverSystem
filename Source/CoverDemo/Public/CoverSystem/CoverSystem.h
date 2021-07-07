@@ -30,7 +30,8 @@ DECLARE_DWORD_ACCUMULATOR_STAT(TEXT("Find Cover - Historical Count"), STAT_FindC
 DECLARE_FLOAT_ACCUMULATOR_STAT(TEXT("Find Cover - Total Time Spent"), STAT_FindCoverTotalTimeSpent, STATGROUP_CoverSystem);
 
 /**
- * Singleton. The cover system contains the cover points octree and is also responsible for hooking into navmesh events to trigger the real-time dynamic (re)generation of cover.
+ * Singleton. The cover system contains the cover points octree and is also responsible for hooking into navmesh events
+ * to trigger the real-time dynamic (re)generation of cover.
  */
 UCLASS()
 class COVERDEMO_API UCoverSystem : public UBlueprintFunctionLibrary
