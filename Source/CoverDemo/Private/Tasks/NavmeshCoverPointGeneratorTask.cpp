@@ -120,9 +120,15 @@ const FBox FNavmeshCoverPointGeneratorTask::GenerateCoverInBounds(TArray<FDTOCov
 
 	// process the navmesh vertices (called nav mesh edges for some occult reason)
 	TArray<FVector>& vertices = navGeo.NavMeshEdges;
+
+	for(FVector vert : vertices){
+		DrawDebugPoint(World, vert, 5.0, FColor::Red, true,-1);
+	}
+	
 	const int nVertices = vertices.Num();
 	if (nVertices > 1)
 	{
+		//UE_LOG(LogTemp, Warning, TEXT("nVerticies: %i"), nVertices);
 		const FVector firstEdgeDir = GetEdgeDir(vertices[0], vertices[1]);
 		const FVector lastEdgeDir = GetEdgeDir(vertices[nVertices - 2], vertices[nVertices - 1]);
 		for (int iVertex = 0; iVertex < nVertices; iVertex += 2)
@@ -154,6 +160,9 @@ const FBox FNavmeshCoverPointGeneratorTask::GenerateCoverInBounds(TArray<FDTOCov
 			// process the end vertex again, this time with its edge direction rotated by 45 degrees
 			ProcessEdgeStep(OutCoverPointsOfActors, edgeEndVertex + FVector(0.0f, 0.0f, CoverPointGroundOffset), FVector(FVector2D(edgeDir).GetRotated(45.0f), edgeDir.Z));
 		}
+	}
+	else{
+		UE_LOG(LogTemp, Warning, TEXT(" <=1  verticies"));
 	}
 
 	// return the AABB of the navmesh tile that's been processed, expanded by minimum tile height on the Z-axis

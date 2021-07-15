@@ -136,6 +136,7 @@ bool UCoverSystem::RemoveIDToElementMapping(const FVector ElementLocation)
 
 void UCoverSystem::OnNavMeshTilesUpdated(const TSet<uint32>& UpdatedTiles)
 {
+	UE_LOG(LogTemp, Warning, TEXT("UCoverSystem::OnNavMeshTilesUpdated"));
 	if (bShutdown)
 		return;
 

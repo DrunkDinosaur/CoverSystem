@@ -33,11 +33,14 @@ void AChangeNotifyingRecastNavMesh::EndPlay(const EEndPlayReason::Type EndPlayRe
 
 void AChangeNotifyingRecastNavMesh::OnNavMeshTilesUpdated(const TArray<uint32>& ChangedTiles)
 {
+	UE_LOG(LogTemp, Warning, TEXT("AChangeNotifyingRecastNavMesh::OnNavMeshTilesUpdated"));
 	Super::OnNavMeshTilesUpdated(ChangedTiles);
 
 	TSet<uint32> updatedTiles;
+	UE_LOG(LogTemp, Warning, TEXT("changedTiles num: %i"), ChangedTiles.Num() );
 	for (uint32 changedTile : ChangedTiles)
 	{
+		
 		updatedTiles.Add(changedTile);
 		UpdatedTilesIntervalBuffer.Add(changedTile);
 		UpdatedTilesUntilFinishedBuffer.Add(changedTile);
